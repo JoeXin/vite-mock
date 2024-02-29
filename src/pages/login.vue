@@ -24,7 +24,7 @@
     </div>
 </template>
 <script setup>
-// import { router } from '@/router/index';
+import { router } from '@/router/index';
 import {
     ref,
     reactive,
@@ -41,7 +41,7 @@ const form = reactive({
     lgintype: '1',
 });
 const formRef = ref(null);
-const router = useRouter()
+const routerV = useRouter()
 console.log(router,'router值正确吗')
 const onSubmit = () => {
     formRef.value.validate((valid) => {
