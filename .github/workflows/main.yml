@@ -30,6 +30,10 @@ jobs:
     #       TARGET: /root/dist
     - name: Deploy 🚀                         # 第三步：部署
       uses: JamesIves/github-pages-deploy-action@v4
-        with:
-          folder: dist                         # 部署的目录
-          branch: gh-pages                     # 部署到哪个分支
+        # with:
+        #   folder: dist                         # 部署的目录
+        #   branch: gh-pages                     # 部署到哪个分支
+      with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dist # Adjust this path based on your build output
+          force_orphan: true
