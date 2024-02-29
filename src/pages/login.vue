@@ -49,7 +49,19 @@ const form = reactive({
   lgintype: '1',
 });
 const formRef = ref(null);
-
+        function add(a,b){
+            return a+b
+        }
+        function log(fn){
+            function with2(a,b){
+                const result=fn(a,b)
+                console.log(result,'result')
+                return result
+            }
+            return with2
+        }
+        const fulog=log(add)
+        fulog(1,2)
 const onSubmit = () => {
   formRef.value.validate((valid) => {
     if (!valid) {
