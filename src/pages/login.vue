@@ -24,7 +24,7 @@
     </div>
 </template>
 <script setup>
-import { router } from '@/router/index';
+import { router } from '@/router/index.ts';
 import {
     ref,
     reactive,
