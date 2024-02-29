@@ -42,6 +42,7 @@ const form = reactive({
 });
 const formRef = ref(null);
 const router = useRouter()
+console.log(router,'router值正确吗')
 const onSubmit = () => {
     formRef.value.validate((valid) => {
         if (!valid) {
