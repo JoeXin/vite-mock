@@ -41,10 +41,10 @@ const form = reactive({
     lgintype: '1',
 });
 const formRef = ref(null);
-const routerV = useRouter()
-const useRoute = useRoute()
+const router = useRouter()
+const route = useRoute()
 
-console.log(routerV,useRoute,'router值正确吗')
+console.log(router,route,'router值正确吗')
 const onSubmit = () => {
     formRef.value.validate((valid) => {
         if (!valid) {
@@ -53,7 +53,7 @@ const onSubmit = () => {
 
         http.login(form.username, form.password).then((res) => {
             if (res.success) {
-                routerV.push({ path: '/home' })
+                router.push({ path: '/home' })
             }
         });
     });
