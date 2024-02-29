@@ -24,7 +24,7 @@
     </div>
 </template>
 <script setup>
-import { router } from '@/router/index.ts';
+// import { router } from '@/router/index.ts';
 import {
     ref,
     reactive,
@@ -42,7 +42,9 @@ const form = reactive({
 });
 const formRef = ref(null);
 const routerV = useRouter()
-console.log(router,'router值正确吗')
+const useRoute = useRoute()
+
+console.log(routerV,useRoute,'router值正确吗')
 const onSubmit = () => {
     formRef.value.validate((valid) => {
         if (!valid) {
@@ -51,7 +53,7 @@ const onSubmit = () => {
 
         http.login(form.username, form.password).then((res) => {
             if (res.success) {
-                router.push({ path: '/home' })
+                routerV.push({ path: '/home' })
             }
         });
     });
