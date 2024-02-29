@@ -1,14 +1,24 @@
 <script setup lang="ts">
 import HelloWorld from './components/HelloWorld.vue';
 import Login from './pages/login.vue';
+
+import { RouterView } from "vue-router"
+
 </script>
 
 <template>
-  <!-- <div>2</div> -->
-  <div>简单模拟请求</div>
-  <router-view/> 
-  <Login />
-  <!-- <HelloWorld msg="2" /> -->
+   <!-- <div>
+        <p>
+          简单模拟请求
+        </p>
+       <Login />
+      </div>
+      <router-view/>  -->
+   <RouterView v-slot="{ Component }">
+    <transition name="slide-right" :duration="200">
+      <component :is="Component" />
+    </transition>
+  </RouterView>
 </template>
 
 <style scoped>
