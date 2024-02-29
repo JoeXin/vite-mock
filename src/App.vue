@@ -6,6 +6,7 @@ import Login from './pages/login.vue';
 <template>
   <!-- <div>2</div> -->
   <div>简单模拟请求</div>
+  <router-view/>
   <Login />
   <!-- <HelloWorld msg="2" /> -->
 </template>
