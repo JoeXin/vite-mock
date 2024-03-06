@@ -1,9 +1,8 @@
 # vite+mock模拟真实数据
 
 Run:
-main分支
-   vite-plugin-mock 2.9.8
-   vite 5.1.4
+develop分支
+   vite-plugin-fake-server
 ```
    npm install 
 ```

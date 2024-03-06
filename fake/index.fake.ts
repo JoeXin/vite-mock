@@ -1,5 +1,5 @@
 // import webpackMockServer from 'webpack-mock-server'
-import { mock } from 'vite-plugin-mock';
+import { defineFakeRoute } from 'vite-plugin-fake-server/client'
 const arr = [];
 for (let index = 0; index < 20; index++) {
   arr.push({
@@ -80,7 +80,7 @@ const LogOut = {
   },
 };
 
-export default [
+export default defineFakeRoute([
   {
     url: '/api/getList',
     method: 'post',
@@ -136,21 +136,4 @@ export default [
       return statusList;
     },
   },
-];
-
-// export default webpackMockServer.add((app, helper) => {
-//   app.get('/admin/login', (_req, res) => {
-//     res.json([
-//       {
-//         id: helper.getRandomInt(1, 999),
-//         name: 'pen'
-//       }
-//     ])
-//   })
-// })
-// mock('/admin/login', 'get', {
-//     users: [
-//       { id: 1, name: 'John Doe' },
-//       { id: 2, name: 'Jane Doe' },
-//     ],
-//   });
+]);
