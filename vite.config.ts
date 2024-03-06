@@ -13,6 +13,11 @@ export default defineConfig({
   },
   plugins: [
     vue(),
-    vitePluginFakeServer()
+    vitePluginFakeServer({
+      include: './src/mock',
+      infixName: 'mock',
+      enableDev: true,
+      enableProd: true
+    })
   ],
 });
