@@ -1,6 +1,6 @@
 <template>
-    <div>
-        <el-form ref="formRef" label-width="88px" label-position="left" :model="form">
+    <div class='loginContent'>
+        <el-form ref="formRef"   label-position="left" :model="form">
             <el-form-item prop="username">
                 <el-input v-model="form.username" placeholder="请输入用户名(admin)">
                     <template #prefix>
@@ -19,7 +19,16 @@
                     </template>
                 </el-input>
             </el-form-item>
-            <el-button type="primary" @click="onSubmit">登 录</el-button>
+        
+            <el-button class='elementBtn' type="primary" @click="onSubmit">登 录</el-button>
+                <div class="footer">
+            <a>
+            忘记密码
+            </a>
+            <a>
+            验证码
+            </a>
+            </div>
         </el-form>
     </div>
 </template>
@@ -35,6 +44,7 @@ import {
 import { useRoute, useRouter } from 'vue-router'
 import http from '../api/manager.ts';
 //import http from '../pai/manager.ts';
+import { ElMessage } from 'element-plus'
 const form = reactive({
     username: '',
     password: '',
@@ -51,11 +61,55 @@ const onSubmit = () => {
             return false;
         }
 
+if(!form.username){
+     ElMessage({
+                    message: '请填写用户名',
+                    type: 'Primary',
+                })
+                return;
+}
+if(!form.password){
+     ElMessage({
+                    message: '请填写密码',
+                    type: 'Primary',
+                })
+                return;
+}
         http.login(form.username, form.password).then((res) => {
             if (res.success) {
                 router.push({ path: '/home' })
+            }else{
+                ElMessage({
+                    message: res.msg,
+                    type: 'Primary',
+                })
             }
         });
     });
 };
 </script>
+
+<style lang='less' scoped>
+.loginContent{
+    .el-form-item__content{
+     //   margin-left:0!important;
+    }
+    .el-form-item{
+        margin-bottom:16px;
+    }
+    padding:0 16px;
+        .elementBtn{
+            width: 100%;
+            display:flex;
+               justify-content: center;
+           align-items: center;
+        }
+        .footer{
+            color:blue;
+            padding-top:16px;
+            display:flex;
+               justify-content: space-between;
+           align-items: center;
+        }
+}
+</style>
